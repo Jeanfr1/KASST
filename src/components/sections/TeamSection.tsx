@@ -152,21 +152,21 @@ export default function TeamSection() {
                         <a
                           href={member.social.linkedin}
                           className="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-colors duration-300"
-                          aria-label={`${member.name}'s LinkedIn`}
+                          aria-label={`${member.name}&#39;s LinkedIn`}
                         >
                           <FaLinkedin className="w-5 h-5" />
                         </a>
                         <a
                           href={member.social.twitter}
                           className="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-colors duration-300"
-                          aria-label={`${member.name}'s Twitter`}
+                          aria-label={`${member.name}&#39;s Twitter`}
                         >
                           <FaTwitter className="w-5 h-5" />
                         </a>
                         <a
                           href={member.social.github}
                           className="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-colors duration-300"
-                          aria-label={`${member.name}'s GitHub`}
+                          aria-label={`${member.name}&#39;s GitHub`}
                         >
                           <FaGithub className="w-5 h-5" />
                         </a>
@@ -197,7 +197,7 @@ export default function TeamSection() {
         >
           <h3 className="text-2xl font-bold text-light mb-4">Join Our Team</h3>
           <p className="text-light/70 max-w-2xl mx-auto mb-8">
-            We're always looking for talented individuals who are passionate about blockchain, video platforms, and creating a fair ecosystem for creators and viewers.
+            We&#39;re always looking for talented individuals who are passionate about blockchain, video platforms, and creating a fair ecosystem for creators and viewers.
           </p>
           <a
             href="#"
