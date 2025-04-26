@@ -72,7 +72,15 @@ export default function MVPForm({ onClose, onSubmitSuccess }: MVPFormProps) {
         throw new Error("Failed to submit form");
       }
 
-      onSubmitSuccess();
+      const data = await response.json();
+
+      // Check if we have a redirect URL in the response
+      if (data.redirectUrl) {
+        window.location.href = data.redirectUrl;
+      } else {
+        // Fallback to the normal success handler
+        onSubmitSuccess();
+      }
     } catch (error) {
       console.error("Error submitting form:", error);
       setSubmitError("Failed to submit form. Please try again.");

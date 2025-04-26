@@ -21,10 +21,11 @@ export async function POST(request: Request) {
     // Simulate a slight delay to show loading state on the frontend
     await new Promise((resolve) => setTimeout(resolve, 1000));
 
-    // Return success response
+    // Return success response with redirect URL
     return NextResponse.json({
       success: true,
       message: "Form submitted successfully",
+      redirectUrl: "https://mvpkasst.netlify.app/",
     });
   } catch (error) {
     console.error("Error processing form submission:", error);
