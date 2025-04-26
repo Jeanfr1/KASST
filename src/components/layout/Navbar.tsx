@@ -1,23 +1,26 @@
-'use client';
+"use client";
 
-import { useState, useEffect } from 'react';
-import Link from 'next/link';
-import Image from 'next/image';
-import { motion } from 'framer-motion';
-import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
+import { useState, useEffect } from "react";
+import Link from "next/link";
+import Image from "next/image";
+import { motion } from "framer-motion";
+import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
+import MVPNavigation from "../MVPNavigation";
+import MVPForm from "../MVPForm";
 
 const navLinks = [
-  { name: 'Home', href: '#home' },
-  { name: 'Features', href: '#features' },
-  { name: 'Tokenomics', href: '#tokenomics' },
-  { name: 'Roadmap', href: '#roadmap' },
-  { name: 'Team', href: '#team' },
-  { name: 'FAQ', href: '#faq' },
+  { name: "Home", href: "#home" },
+  { name: "Features", href: "#features" },
+  { name: "Tokenomics", href: "#tokenomics" },
+  { name: "Roadmap", href: "#roadmap" },
+  { name: "Team", href: "#team" },
+  { name: "FAQ", href: "#faq" },
 ];
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [showMVPForm, setShowMVPForm] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -28,16 +31,21 @@ export default function Navbar() {
       }
     };
 
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  const handleOpenMVPForm = () => {
+    setIsOpen(false); // Close mobile menu
+    setShowMVPForm(true);
+  };
 
   return (
     <nav
       className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
         scrolled
-          ? 'bg-dark-light/80 backdrop-blur-md shadow-lg'
-          : 'bg-transparent'
+          ? "bg-dark-light/80 backdrop-blur-md shadow-lg"
+          : "bg-transparent"
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -80,6 +88,10 @@ export default function Navbar() {
                   {link.name}
                 </Link>
               ))}
+
+              {/* MVP Kasst Button */}
+              <MVPNavigation />
+
               <Link
                 href="#buy"
                 className="btn-primary flex items-center justify-center"
@@ -111,7 +123,7 @@ export default function Navbar() {
         initial={{ opacity: 0, height: 0 }}
         animate={{
           opacity: isOpen ? 1 : 0,
-          height: isOpen ? 'auto' : 0,
+          height: isOpen ? "auto" : 0,
         }}
         transition={{ duration: 0.3 }}
         className="md:hidden overflow-hidden"
@@ -127,6 +139,15 @@ export default function Navbar() {
               {link.name}
             </Link>
           ))}
+
+          {/* Mobile MVP Kasst Button */}
+          <button
+            className="block w-full text-left px-3 py-2 rounded-md text-base font-medium text-light hover:text-primary hover:bg-dark-light transition-colors duration-300"
+            onClick={handleOpenMVPForm}
+          >
+            MVP Kasst
+          </button>
+
           <Link
             href="#buy"
             className="block px-3 py-2 rounded-md text-base font-medium bg-primary hover:bg-primary-dark text-white transition-colors duration-300 text-center mt-4"
@@ -136,6 +157,17 @@ export default function Navbar() {
           </Link>
         </div>
       </motion.div>
+
+      {/* MVP Form for Mobile (rendered here so it's outside the mobile menu) */}
+      {showMVPForm && (
+        <MVPForm
+          onClose={() => setShowMVPForm(false)}
+          onSubmitSuccess={() => {
+            setShowMVPForm(false);
+            window.location.href = "/mvp";
+          }}
+        />
+      )}
     </nav>
   );
 }
