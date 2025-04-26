@@ -15,8 +15,8 @@ export default function MVPNavigation() {
   };
 
   const handleFormSubmitSuccess = () => {
-    // Redirect to MVP page after successful form submission
-    window.location.href = "/mvp"; // Change this URL to your actual MVP page
+    // Redirect to the actual MVP Kasst site after successful form submission
+    window.location.href = "https://mvpkasst.netlify.app/";
   };
 
   return (

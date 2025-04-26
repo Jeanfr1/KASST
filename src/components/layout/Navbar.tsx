@@ -164,7 +164,7 @@ export default function Navbar() {
           onClose={() => setShowMVPForm(false)}
           onSubmitSuccess={() => {
             setShowMVPForm(false);
-            window.location.href = "/mvp";
+            window.location.href = "https://mvpkasst.netlify.app/";
           }}
         />
       )}
